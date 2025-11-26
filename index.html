@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emily in Paris - Language Learning Platform</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="typing-header" id="mainTitle"></h1>
+            <p class="subtitle">Master English expressions through cinematic dialogue</p>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="navigation">
+            <button class="nav-btn active" data-section="dialogue">Original Dialogue</button>
+            <button class="nav-btn" data-section="expressions">Expressions</button>
+            <button class="nav-btn" data-section="scenarios">Real Scenarios</button>
+            <button class="nav-btn" data-section="exercises">Exercises</button>
+            <button class="nav-btn" data-section="followup">Follow-up</button>
+        </nav>
+
+        <!-- Section 1: Original Dialogue -->
+        <section id="dialogue" class="content-section active">
+            <div class="category-header">
+                <h2>📺 Original Dialogue</h2>
+                <div class="category-tags">
+                    <span class="tag">Scene Analysis</span>
+                    <span class="tag">Context</span>
+                </div>
+            </div>
+
+            <div class="dialogue-container">
+                <div class="scene-card">
+                    <h3>Scene Context</h3>
+                    <p class="scene-description" id="sceneContext"></p>
+                </div>
+
+                <div class="dialogue-box">
+                    <div class="dialogue-text" id="dialogueText">
+                        <!-- Dialogue will be inserted here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Expressions Extracted -->
+        <section id="expressions" class="content-section">
+            <div class="category-header">
+                <h2>✨ Key Expressions & Idioms</h2>
+                <div class="category-tags">
+                    <span class="tag">Vocabulary</span>
+                    <span class="tag">Idioms</span>
+                    <span class="tag">Collocations</span>
+                </div>
+            </div>
+
+            <div class="expressions-grid" id="expressionsGrid">
+                <!-- Expression cards will be generated here -->
+            </div>
+        </section>
+
+        <!-- Section 3: Real Scenarios -->
+        <section id="scenarios" class="content-section">
+            <div class="category-header">
+                <h2>🎭 Real-Life Scenarios</h2>
+                <div class="category-tags">
+                    <span class="tag">Practical Usage</span>
+                    <span class="tag">Walk-through</span>
+                </div>
+            </div>
+
+            <div class="scenarios-container" id="scenariosContainer">
+                <!-- Scenarios will be generated here -->
+            </div>
+        </section>
+
+        <!-- Section 4: Interactive Exercises -->
+        <section id="exercises" class="content-section">
+            <div class="category-header">
+                <h2>🎯 Interactive Exercises</h2>
+                <div class="category-tags">
+                    <span class="tag">Practice</span>
+                    <span class="tag">Assessment</span>
+                </div>
+            </div>
+
+            <div class="exercise-tabs">
+                <button class="exercise-tab active" data-exercise="fillblanks">Fill in the Blanks</button>
+                <button class="exercise-tab" data-exercise="matching">Match Expressions</button>
+                <button class="exercise-tab" data-exercise="contextual">Contextual Usage</button>
+                <button class="exercise-tab" data-exercise="dialogue">Create Dialogue</button>
+            </div>
+
+            <div class="exercises-content">
+                <!-- Exercise 1: Fill in the Blanks -->
+                <div class="exercise-panel active" id="fillblanks">
+                    <h3>Complete the Sentences</h3>
+                    <div id="fillBlanksQuestions"></div>
+                    <button class="check-btn" onclick="checkFillBlanks()">Check Answers</button>
+                    <div class="score-display" id="fillBlanksScore"></div>
+                </div>
+
+                <!-- Exercise 2: Matching -->
+                <div class="exercise-panel" id="matching">
+                    <h3>Match Expressions with Meanings</h3>
+                    <div class="matching-container" id="matchingGame"></div>
+                    <button class="check-btn" onclick="checkMatching()">Check Matches</button>
+                    <div class="score-display" id="matchingScore"></div>
+                </div>
+
+                <!-- Exercise 3: Contextual Usage -->
+                <div class="exercise-panel" id="contextual">
+                    <h3>Choose the Right Expression</h3>
+                    <div id="contextualQuestions"></div>
+                    <button class="check-btn" onclick="checkContextual()">Check Answers</button>
+                    <div class="score-display" id="contextualScore"></div>
+                </div>
+
+                <!-- Exercise 4: Dialogue Creation -->
+                <div class="exercise-panel" id="dialogue">
+                    <h3>Create Your Own Dialogue</h3>
+                    <div class="dialogue-creator">
+                        <p class="instruction">Use at least 3 expressions from the lesson:</p>
+                        <div class="expression-chips" id="expressionChips"></div>
+                        <textarea id="studentDialogue" placeholder="Write your dialogue here..." rows="10"></textarea>
+                        <button class="check-btn" onclick="analyzeDialogue()">Analyze My Dialogue</button>
+                        <div class="feedback-box" id="dialogueFeedback"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Follow-up Activities -->
+        <section id="followup" class="content-section">
+            <div class="category-header">
+                <h2>🚀 Follow-up Activities</h2>
+                <div class="category-tags">
+                    <span class="tag">Advanced</span>
+                    <span class="tag">Real-world</span>
+                </div>
+            </div>
+
+            <div class="followup-grid">
+                <div class="followup-card">
+                    <h3>🎤 Speaking Challenge</h3>
+                    <p>Record yourself using 5 expressions in a 2-minute monologue about your day.</p>
+                    <button class="action-btn" onclick="startRecording()">Start Recording</button>
+                    <div id="recordingArea"></div>
+                </div>
+
+                <div class="followup-card">
+                    <h3>✍️ Writing Assignment</h3>
+                    <p>Write a short story (200 words) incorporating at least 8 expressions from this lesson.</p>
+                    <textarea id="writingAssignment" placeholder="Start writing..." rows="8"></textarea>
+                    <button class="action-btn" onclick="submitWriting()">Submit</button>
+                </div>
+
+                <div class="followup-card">
+                    <h3>🎬 Scene Recreation</h3>
+                    <p>Choose a scene and rewrite it with different characters but same expressions.</p>
+                    <select id="sceneSelect">
+                        <option>Select a scene...</option>
+                    </select>
+                    <textarea id="sceneRewrite" placeholder="Rewrite the scene..." rows="8"></textarea>
+                    <button class="action-btn" onclick="submitRewrite()">Submit</button>
+                </div>
+
+                <div class="followup-card">
+                    <h3>📊 Progress Tracker</h3>
+                    <div class="progress-stats">
+                        <div class="stat">
+                            <span class="stat-label">Expressions Mastered:</span>
+                            <span class="stat-value" id="masteredCount">0</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Exercises Completed:</span>
+                            <span class="stat-value" id="exercisesCount">0</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Overall Score:</span>
+                            <span class="stat-value" id="overallScore">0%</span>
+                        </div>
+                    </div>
+                    <canvas id="progressChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Progress Bar -->
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
